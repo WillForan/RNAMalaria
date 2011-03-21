@@ -1,4 +1,4 @@
-*features/
+* features/
 ** see features/readme.txt
 ** database of gene features from plasmodb
 ** types in database for gene features (e.g. exons, rRNA, ncRNA)

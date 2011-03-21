@@ -1,9 +1,9 @@
 * Genome Features for Plasmodium Falciparum
-**current:	2011-03-01
-**strain:	3D7
-**url:		ftp://ftp.sanger.ac.uk/pub/pathogens/Plasmodium/falciparum/3D7/3D7.latest_version/
+** current:	2011-03-01
+** strain:	3D7
+** url:		ftp://ftp.sanger.ac.uk/pub/pathogens/Plasmodium/falciparum/3D7/3D7.latest_version/
 
-**./get.sh
+** ./get.sh
 *** get the database (GFF format for each chrom)
 *** save to date directory
 *** use featuresSchema.sql as schema 

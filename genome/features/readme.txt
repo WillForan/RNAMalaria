@@ -1,0 +1,23 @@
+* Genome Features for Plasmodium Falciparum
+**current:	2011-03-01
+**strain:	3D7
+**url:		ftp://ftp.sanger.ac.uk/pub/pathogens/Plasmodium/falciparum/3D7/3D7.latest_version/
+
+**./get.sh
+*** get the database (GFF format for each chrom)
+*** save to date directory
+*** use featuresSchema.sql as schema 
+*** call ./parse.pl to translate GFF to sqlite3 database
+
+** Design Choices ( Sun Mar 20 12:42:23 EDT 2011 )
+*** IGNORED fasta gene info included in gff
+*** Produce only one table (rather than a table for genes, gaps, ncRNA, rRNA etc
+**** all types can be viewed:
+		cut -f3 -s 2011-03-20/* |sort |uniq -c
+****  9 fields outlined in gff file by http://genome.ucsc.edu/FAQ/FAQformat.html
+**** plus many more lumped into the last ('group') feild
+	see featuresSchema.sql
+***** Many of the fields are used by only one read and might be useless (e.g. clustalx_file, blastp_file)
+*** stop_codon_redefined_as_selenocysteine is not given a value consistnatly
+**** assume appears (which is very rare) indicates it is true
+

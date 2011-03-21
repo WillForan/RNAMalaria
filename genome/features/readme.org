@@ -9,7 +9,9 @@
 *** use featuresSchema.sql as schema 
 *** call ./parse.pl to translate GFF to sqlite3 database
 *** fasta info of chrom is concatonated into fasta saved one directory up ( ../PF3D7_March_2011.fasta )
+**** two sets of files: all together, and bychrom/01..14.fasta
 **** Different from current genome fasta file
+** Also use formatedb to build blast database
 
 ** Design Choices ( Sun Mar 20 12:42:23 EDT 2011 )
 *** Produce only one table (rather than a table for genes, gaps, ncRNA, rRNA etc

@@ -1,0 +1,6 @@
+* PlasmodiumFalciparum
+** genome
+*** features
+**** Features of the genome (mRNA, genes, exons, etc)
+**** Get from plasmodb
+**** Parse to sqlite3

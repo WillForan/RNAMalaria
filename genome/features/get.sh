@@ -4,7 +4,7 @@
 #or use parameter/argument
 recent='March_2011'
 #where files go
-base='/home/RNA/PlasmodiumFalciparum/genome/features/';
+base='/home/RNA/PlasmodiumFalciparum/genome/';
 
 #do we have a param?
 if [ "$1 x" != " x" ] ; then
@@ -14,11 +14,11 @@ fi
 #where sanger has the genome files
 url="ftp://ftp.sanger.ac.uk/pub/pathogens/Plasmodium/falciparum/3D7/3D7.latest_version/$recent/"
 #where to put the gff files
-save="${base}$(date +%F)"
+save="${base}features/$(date +%F)"
 #where the db file should go
-db="${base}features.sqlite3"
+db="${base}features/features.sqlite3"
 #db schema
-schema="${base}featuresSchema.sql"
+schema="${base}features/featuresSchema.sql"
 
 #make save dir if it doesn't exist
 if [ ! -d $save ]; then 
@@ -49,4 +49,6 @@ sqlite3 $db < $schema	#generare the schema of the new one
 for i in 0{1..9} {10..14}; do
     echo "Parsing chr$i feature data"
     ./parse.pl $save/${i}.gff #|sqlite3 $db
+    echo "Parsing chr$1 sequence data"
+    awk "(NR>=$(grep -n \>Pf3D7 $save/${i}.gff| sed s/:.*$//)){print}" $save/${i}.gff >> ${base}/PF3D7_$recent.fasta
 done

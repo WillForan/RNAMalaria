@@ -8,9 +8,10 @@
 *** save to date directory
 *** use featuresSchema.sql as schema 
 *** call ./parse.pl to translate GFF to sqlite3 database
+*** fasta info of chrom is concatonated into fasta saved one directory up ( ../PF3D7_March_2011.fasta )
+**** Different from current genome fasta file
 
 ** Design Choices ( Sun Mar 20 12:42:23 EDT 2011 )
-*** IGNORED fasta gene info included in gff
 *** Produce only one table (rather than a table for genes, gaps, ncRNA, rRNA etc
 **** all types can be viewed:
 		cut -f3 -s 2011-03-20/* |sort |uniq -c

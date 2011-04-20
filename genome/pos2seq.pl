@@ -5,17 +5,16 @@ use POSIX;
 #use Data::Dumper;
 
 #where the bychrom fasta files are
-#TODO this should work outside of wfo../pf5
-my $BASE='/home/wforan1/seq/pf5/';
+my $BASE='/home/RNA/PlasmodiumFalciparum/genome/pf5/bychrm/';
 my $rev=0;
 
 #get what to do
 use Getopt::Std;
 my %opt=();
-getopts('c:s:e');
+getopts('c:s:e:',\%opt);
 my ($chrm, $start,$end);
 if(defined($opt{'c'}) && defined($opt{'s'}) && defined($opt{'e'}) ) {
-    $chrm=$opt{'c'}; $start=$opt{'s'}; $end=$opt{'e'};
+    $chrm="chr".$opt{'c'}; $start=$opt{'s'}; $end=$opt{'e'};
 }
 elsif($#ARGV==0 && ($ARGV[0]=~m/(.*):(.*)-(.*)/) ) {
      $chrm=lc($1);  $start=$2;  $end=$3;
@@ -27,8 +26,9 @@ else {
 
 #if is reverse
 if($start>$end){
-    $start=$3;
-    $end=$2;
+    my $tmp=$start;
+    $start=$end;
+    $end=$tmp;
     $rev=1;
 }
 open my $cFILE, "$BASE$chrm.fa" or die "Cannot open $chrm.fa file: $!\n";

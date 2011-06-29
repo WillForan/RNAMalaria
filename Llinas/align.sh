@@ -36,10 +36,11 @@ for dir in $(ls -d $BASE/reads/*hr_P*/); do
 
      #align!
      $BOWTIE $REF \
-     --chunkmbs 128 \
+     --chunkmbs 512 \
      -1 ${dir}${pair}_1.fastq \
      -2 ${dir}${pair}_2.fastq \
-     > $BASE/alignments/$algdir/$pair.txt
+     > $BASE/alignments/$algdir/$pair.map \
+     2> $BASE/alignments/$algdir/$pair-stats.txt
 
  done;
 done;

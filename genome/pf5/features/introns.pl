@@ -28,7 +28,7 @@ while (<$pipeFH>) {
 	}
 
 	if($#introns>-1){
-	    print(join("\t",$supercontig, @{$_}),"\n") for @introns;
+	    print(join("\t",$strand, $supercontig, @{$_}),"\n") for @introns;
 	    print "\n\n" if $DEBUG;
 	}
 
@@ -81,6 +81,11 @@ while (<$pipeFH>) {
 	}
     }
 
+}
+#if there is anything left, print it
+if($#introns>-1){
+    print(join("\t","-", $gene[0], @{$_}),"\n") for @introns;
+    print "\n\n" if $DEBUG;
 }
 
 
